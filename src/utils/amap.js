@@ -115,7 +115,7 @@ const GRADIENTS = {
   '마사지': 'from-purple-400 to-pink-500',
   '당구':   'from-green-400 to-teal-500',
   '쇼핑몰': 'from-pink-400 to-rose-500',
-  '집':     'from-blue-400 to-indigo-500',
+  '집/회사': 'from-blue-400 to-indigo-500',
 };
 
 export function getCategoryGradient(category, subCategory) {

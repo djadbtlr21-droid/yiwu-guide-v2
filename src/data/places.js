@@ -1,5 +1,5 @@
 // 이우(义乌) 23개 업체 — 실제 데이터
-// category: '식당' | '당구' | '마사지' | '쇼핑몰' | '집'
+// category: '식당' | '당구' | '마사지' | '쇼핑몰' | '집/회사'
 // subCategory: '한식' | '중식' | null
 
 export const places = [
@@ -658,46 +658,165 @@ export const places = [
   },
 
   // ──────────────────────────────────────────
-  // 쇼핑몰 (1개)
+  // 쇼핑몰 (3개)
   // ──────────────────────────────────────────
   {
-    id: 23,
-    name: '新光汇购物中心',
-    nameKo: '신광휘 쇼핑센터',
-    nameEn: 'Xinguanghui Shopping Center',
+    id: 24,
+    name: '义乌之心城市生活广场',
+    nameEn: 'Yiwu Heart Shopping Mall',
+    nameKo: '이우지신 쇼핑몰',
     category: '쇼핑몰',
-    subCategory: null,
-    rating: 4.5,
-    reviews: 8900,
-    priceRange: '쇼핑몰',
+    subCategory: '쇼핑몰',
+    images: ['https://via.placeholder.com/400x300?text=义乌之心'],
+    rating: 4.0,
+    reviews: 1501,
     address: {
-      cn: '浙江省义乌市福田街道城北路与福田路交叉口东北角',
-      en: 'NE Corner, Chengbei Road & Futian Road Intersection, Futian Street, Yiwu',
-      ko: '절강성 이우시 푸텐거리 성북로와 푸텐로 교차점 동북각',
+      ko: '절강성 이우시 초성거리 공인서로 9번',
+      en: 'No.9 Gongren West Road, Choucheng Street, Yiwu',
+      cn: '义乌市稠城街道工人西路9号',
     },
     phone: [],
     wechat: '',
-    hours: '10:00~22:00',
-    amenities: ['대형주차장', '식당가', '영화관', '마트', '패션', '전자제품'],
+    hours: '영업시간 미정',
+    priceRange: '미정',
+    amenities: ['대형 쇼핑몰', 'F4~B2층'],
     description: {
-      ko: '이우 최대 쇼핑센터. 하이디라오, KK당구, 영화관 등 입점. 회사에서 도보 5분.',
-      en: 'Yiwu\'s largest shopping center. Houses Haidilao, KK Billiards, cinema, and more. 5 min walk from office.',
+      ko: '이우 대형 쇼핑몰. F4~B2층 규모.',
+      en: 'Yiwu large shopping mall. F4~B2 floors.',
+    },
+    coordinates: { lat: 29.3089, lng: 120.0831 },
+    distance: '3.9km',
+    walkTime: '약 50분',
+    driveTime: '약 15분',
+  },
+  {
+    id: 25,
+    name: '义乌天地',
+    nameEn: 'Yiwu Tiandi',
+    nameKo: '이우천지 쇼핑몰',
+    category: '쇼핑몰',
+    subCategory: '쇼핑몰',
+    images: ['https://via.placeholder.com/400x300?text=义乌天地'],
+    rating: 3.5,
+    reviews: 1207,
+    address: {
+      ko: '절강성 이우시 초성거리 성중로 61번',
+      en: 'No.61 Chengzhong Road, Choucheng Street, Yiwu',
+      cn: '义乌市稠城街道城中中路61号',
+    },
+    phone: [],
+    wechat: '',
+    hours: '영업시간 미정',
+    priceRange: '미정',
+    amenities: ['대형 쇼핑몰'],
+    description: {
+      ko: '이우 대형 복합 쇼핑몰.',
+      en: 'Yiwu large complex shopping mall.',
+    },
+    coordinates: { lat: 29.3208, lng: 120.0860 },
+    distance: '5.9km',
+    walkTime: '약 75분',
+    driveTime: '약 20분',
+  },
+  {
+    id: 26,
+    name: '新光汇(义乌世贸中心店)',
+    nameEn: 'Xinghui Shopping Center',
+    nameKo: '신광휘 쇼핑몰',
+    category: '쇼핑몰',
+    subCategory: '쇼핑몰',
+    images: ['https://via.placeholder.com/400x300?text=新光汇'],
+    rating: 5.0,
+    reviews: 850,
+    address: {
+      ko: '절강성 이우시 푸텐거리 성북로와 푸텐로 교차점 동북각',
+      en: 'Northeast Corner of Chengbei Road & Futian Road, Futian Street, Yiwu',
+      cn: '义乌市福田街道城北路与福田路交叉口东北角',
+    },
+    phone: [],
+    wechat: '',
+    hours: '영업시간 미정',
+    priceRange: '미정',
+    amenities: ['4F~B2층', '福田街道购物热门榜1名'],
+    description: {
+      ko: '신광휘 쇼핑몰. 福田街道 쇼핑 1위.',
+      en: 'Xinghui Shopping Center. No.1 shopping in Futian Street.',
     },
     coordinates: { lat: 29.3047, lng: 120.0732 },
-    distance: '360m',
-    walkTime: '5분',
-    driveTime: '5분',
-    images: [null, null, null],
+    distance: '586m',
+    walkTime: '약 8분',
+    driveTime: '약 3분',
+  },
+  // ──────────────────────────────────────────
+  // 집/회사 (2개)
+  // ──────────────────────────────────────────
+  {
+    id: 23,
+    name: '义乌世贸中心',
+    nameEn: 'Yiwu World Trade Center Apartment',
+    nameKo: '이우 세무중심 아파트 (집)',
+    category: '집/회사',
+    subCategory: '집',
+    images: ['https://via.placeholder.com/400x300?text=义乌世贸中心'],
+    rating: 0,
+    reviews: 0,
+    address: {
+      ko: '절강성 이우시 금융1가와 금융2가 교차점 서남쪽 120m',
+      en: '120m Southwest of Jinrong 1st & 2nd Street Intersection, Yiwu',
+      cn: '义乌市金融一街与金融二街交叉口西南120米',
+    },
+    phone: [],
+    wechat: '',
+    hours: '24시간',
+    priceRange: '홈',
+    amenities: ['현재 거주지'],
+    description: {
+      ko: '현재 거주 중인 아파트.',
+      en: 'Current residence apartment.',
+    },
+    coordinates: { lat: 29.3054, lng: 120.0759 },
+    distance: '579m',
+    walkTime: '9분',
+    driveTime: '3분',
+  },
+  {
+    id: 27,
+    name: '莲都大厦B座',
+    nameEn: 'Liandu Building Block B (Office)',
+    nameKo: '리엔두 빌딩 B동 (회사)',
+    category: '집/회사',
+    subCategory: '회사',
+    images: ['https://via.placeholder.com/400x300?text=莲都大厦B座'],
+    rating: 0,
+    reviews: 0,
+    address: {
+      ko: '절강성 이우시 푸텐거리 금융상무구 1기 금융3가 1번 3호 리엔두 빌딩',
+      en: 'No.1-3 Jinrong 3rd Street, Phase 1 Financial District, Futian Street, Yiwu',
+      cn: '义乌市福田街道金融商务区一期金融三街1号3号莲都大厦',
+    },
+    phone: [],
+    wechat: '',
+    hours: '평일 09:00-18:00',
+    priceRange: '사무실',
+    amenities: ['현재 근무지', '34층'],
+    description: {
+      ko: '현재 근무 중인 사무실. 34층.',
+      en: 'Current office. 34th floor.',
+    },
+    coordinates: { lat: 29.3058, lng: 120.0764 },
+    distance: '500m 미만',
+    walkTime: '8분',
+    driveTime: '2분',
   },
 ];
 
-// ── Category metadata (탭 순서: 식당 → 당구 → 마사지 → 쇼핑몰 → 집)
+// ── Category metadata (탭 순서: 식당 → 당구 → 마사지 → 쇼핑몰 → 집/회사)
 export const CATEGORIES = [
-  { id: '식당',  icon: '🍽', color: 'orange' },
-  { id: '당구',  icon: '🎱', color: 'green'  },
-  { id: '마사지', icon: '💆', color: 'purple' },
-  { id: '쇼핑몰', icon: '🛍', color: 'pink'   },
-  { id: '집',    icon: '🏠', color: 'blue'   },
+  { id: '식당',   icon: '🍽', color: 'orange' },
+  { id: '당구',   icon: '🎱', color: 'green'  },
+  { id: '마사지',  icon: '💆', color: 'purple' },
+  { id: '쇼핑몰',  icon: '🛍', color: 'pink'   },
+  { id: '집/회사', icon: '🏠', color: 'blue'   },
 ];
 
 // 식당에만 소분류 필터 적용

@@ -28,7 +28,7 @@ export default function TabNav() {
     '당구':  t.billiards,
     '마사지': t.massage,
     '쇼핑몰': t.shopping,
-    '집':    t.home,
+    '집/회사': t.home,
   };
 
   return (
