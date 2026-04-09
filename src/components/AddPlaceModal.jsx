@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { X, Star } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { T } from '../translations';
@@ -17,7 +17,10 @@ const EMPTY_FORM = {
   price: '',
   description: '',
   rating: 0,
+  images: [],
 };
+
+const MAX_IMAGES = 3;
 
 function StarInput({ value, onChange }) {
   const [hover, setHover] = useState(0);
@@ -53,6 +56,8 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
 
   const [form, setForm] = useState(EMPTY_FORM);
   const [error, setError] = useState('');
+  const cameraRef = useRef(null);
+  const galleryRef = useRef(null);
 
   // Pre-fill form when editing
   useEffect(() => {
@@ -70,6 +75,7 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
         price: editingPlace.price || '',
         description: editingPlace.description || '',
         rating: editingPlace.rating || 0,
+        images: editingPlace.images || [],
       });
     } else {
       // tab is now a Korean string ('식당', etc.)
@@ -78,6 +84,22 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
   }, [editingPlace, tab]);
 
   const set = (key, val) => setForm(f => ({ ...f, [key]: val }));
+
+  const handleImageSelect = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (form.images.length >= MAX_IMAGES) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setForm(f => ({ ...f, images: [...f.images, reader.result] }));
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  };
+
+  const removeImage = (index) => {
+    setForm(f => ({ ...f, images: f.images.filter((_, i) => i !== index) }));
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -98,6 +120,7 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
       price: form.price.trim(),
       description: form.description.trim(),
       rating: form.rating,
+      images: form.images,
     };
     if (editingPlace) {
       updateCustomPlace(editingPlace.id, data);
@@ -134,6 +157,24 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <X size={20} className="text-gray-500" />
+          </button>
+        </div>
+
+        {/* Save/Cancel buttons at top */}
+        <div className="flex gap-3 px-5 py-3 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex-1 py-2.5 rounded-xl border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+          >
+            {t.cancel}
+          </button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="flex-1 py-2.5 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors shadow-sm"
+          >
+            {t.save}
           </button>
         </div>
 
@@ -217,6 +258,47 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
             <StarInput value={form.rating} onChange={v => set('rating', v)} />
           </div>
 
+          {/* Image upload */}
+          <div>
+            <label className={labelClass}>{lang === 'ko' ? '사진' : 'Photos'} ({form.images.length}/{MAX_IMAGES})</label>
+            <div className="flex gap-2 mb-2">
+              <button
+                type="button"
+                onClick={() => cameraRef.current?.click()}
+                disabled={form.images.length >= MAX_IMAGES}
+                className="flex-1 py-2 rounded-xl border border-gray-200 dark:border-gray-600 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40"
+              >
+                📷 {lang === 'ko' ? '사진 촬영' : 'Camera'}
+              </button>
+              <button
+                type="button"
+                onClick={() => galleryRef.current?.click()}
+                disabled={form.images.length >= MAX_IMAGES}
+                className="flex-1 py-2 rounded-xl border border-gray-200 dark:border-gray-600 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40"
+              >
+                🖼️ {lang === 'ko' ? '갤러리에서 선택' : 'Gallery'}
+              </button>
+              <input ref={cameraRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImageSelect} />
+              <input ref={galleryRef} type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
+            </div>
+            {form.images.length > 0 && (
+              <div className="flex gap-2 overflow-x-auto">
+                {form.images.map((img, i) => (
+                  <div key={i} className="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-600">
+                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => removeImage(i)}
+                      className="absolute top-0.5 right-0.5 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center"
+                    >
+                      <X size={12} className="text-white" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Address */}
           <div>
             <label className={labelClass}>{t.address}</label>
@@ -289,28 +371,9 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
             />
           </div>
 
-          {/* Bottom padding so last field isn't hidden behind sticky footer */}
+          {/* Bottom padding so last field isn't hidden */}
           <div className="h-2" />
         </form>
-
-        {/* Footer buttons (sticky) */}
-        <div className="flex gap-3 px-5 py-4 border-t border-gray-100 dark:border-gray-800 flex-shrink-0 bg-white dark:bg-gray-900 rounded-b-2xl">
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex-1 py-3 rounded-xl border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-          >
-            {t.cancel}
-          </button>
-          <button
-            type="submit"
-            form="add-place-form"
-            onClick={handleSubmit}
-            className="flex-1 py-3 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors shadow-sm"
-          >
-            {t.save}
-          </button>
-        </div>
       </div>
     </div>
   );
