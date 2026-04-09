@@ -9,7 +9,6 @@ import { T } from '../translations';
 import { getPlaceById } from '../data/places';
 import { getAmapNavUrl, openAmapNavigation, getWhatsAppUrl, isOpenNow, getCategoryGradient } from '../utils/amap';
 import ImageGallery from '../components/ImageGallery';
-import MapView from '../components/MapView';
 import { StarRating } from '../components/PlaceCard';
 
 function InfoRow({ icon, label, children }) {
@@ -52,7 +51,7 @@ export default function DetailPage() {
   const displayName = lang === 'en' && place.nameEn ? place.nameEn : (place.nameKo || place.name);
   const displayAddress = lang === 'en' ? place.address?.en : (place.address?.ko || place.address?.cn);
 
-  const navAddress = place.address?.cn || place.name;
+  const navAddress = place.name;
   const navUrl = getAmapNavUrl(place.coordinates?.lng, place.coordinates?.lat, navAddress);
   const waUrl = getWhatsAppUrl(place.wechat);
 
@@ -155,7 +154,7 @@ export default function DetailPage() {
                   🚶 {place.walkTime}
                 </span>
               )}
-              <p className="w-full text-sm font-bold text-orange-400 mt-1">(신광휘에서 출발 시)</p>
+              <span className="ml-auto text-sm font-bold text-orange-400">(신광휘에서 출발 시)</span>
             </div>
           )}
         </div>
@@ -170,17 +169,6 @@ export default function DetailPage() {
             {t.navigate}
             <ExternalLink size={14} className="opacity-70" />
           </button>
-        )}
-
-        {/* Map */}
-        {place.coordinates?.lng && (
-          <div className="mb-4">
-            <MapView
-              lng={place.coordinates.lng}
-              lat={place.coordinates.lat}
-              name={displayName}
-            />
-          </div>
         )}
 
         {/* Info card */}
