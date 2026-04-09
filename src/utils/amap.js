@@ -35,9 +35,37 @@ export function getStaticMapUrl(lng, lat, zoom = 15, size = '600*300') {
 }
 
 // ── Amap navigation deeplink ───────────────────────────────────
-export function getAmapNavUrl(lng, lat, name = '') {
-  const encodedName = encodeURIComponent(name);
-  return `https://uri.amap.com/navigation?to=${lng},${lat},${encodedName}&mode=car&src=yiwuguide&callnative=1`;
+export function getAmapNavUrl(lng, lat, address = '') {
+  const encoded = encodeURIComponent(address);
+  return `https://uri.amap.com/navigation?to=${lng},${lat},${encoded}&mode=car&src=yiwuguide&callnative=1`;
+}
+
+// ── Open Amap with mobile deeplink → web fallback ─────────────
+export function openAmapNavigation(lng, lat, address = '') {
+  const ua = navigator.userAgent;
+  const isAndroid = /android/i.test(ua);
+  const isIOS = /iphone|ipad|ipod/i.test(ua);
+  const webUrl = getAmapNavUrl(lng, lat, address);
+
+  if (isAndroid) {
+    const deeplink = `androidamap://navi?sourceApplication=yiwuguide&lat=${lat}&lon=${lng}&dev=0&style=2`;
+    const timer = setTimeout(() => { window.location.href = webUrl; }, 1500);
+    window.addEventListener('visibilitychange', function handler() {
+      clearTimeout(timer);
+      window.removeEventListener('visibilitychange', handler);
+    }, { once: true });
+    window.location.href = deeplink;
+  } else if (isIOS) {
+    const deeplink = `iosamap://navi?sourceApplication=yiwuguide&lat=${lat}&lon=${lng}&dev=0&style=2`;
+    const timer = setTimeout(() => { window.location.href = webUrl; }, 1500);
+    window.addEventListener('visibilitychange', function handler() {
+      clearTimeout(timer);
+      window.removeEventListener('visibilitychange', handler);
+    }, { once: true });
+    window.location.href = deeplink;
+  } else {
+    window.open(webUrl, '_blank', 'noopener,noreferrer');
+  }
 }
 
 // ── WhatsApp URL ───────────────────────────────────────────────

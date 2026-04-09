@@ -7,7 +7,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { T } from '../translations';
 import { getPlaceById } from '../data/places';
-import { getAmapNavUrl, getWhatsAppUrl, isOpenNow, getCategoryGradient } from '../utils/amap';
+import { getAmapNavUrl, openAmapNavigation, getWhatsAppUrl, isOpenNow, getCategoryGradient } from '../utils/amap';
 import ImageGallery from '../components/ImageGallery';
 import MapView from '../components/MapView';
 import { StarRating } from '../components/PlaceCard';
@@ -52,7 +52,8 @@ export default function DetailPage() {
   const displayName = lang === 'en' && place.nameEn ? place.nameEn : (place.nameKo || place.name);
   const displayAddress = lang === 'en' ? place.address?.en : (place.address?.ko || place.address?.cn);
 
-  const navUrl = getAmapNavUrl(place.coordinates?.lng, place.coordinates?.lat, place.name);
+  const navAddress = place.address?.cn || place.name;
+  const navUrl = getAmapNavUrl(place.coordinates?.lng, place.coordinates?.lat, navAddress);
   const waUrl = getWhatsAppUrl(place.wechat);
 
   const gradient = getCategoryGradient(place.category, place.subCategory);
@@ -154,22 +155,21 @@ export default function DetailPage() {
                   🚶 {place.walkTime}
                 </span>
               )}
+              <p className="w-full text-xs text-gray-400 dark:text-gray-500 mt-1">(신광휘에서 출발 시)</p>
             </div>
           )}
         </div>
 
         {/* Amap navigate button */}
         {place.coordinates?.lng && (
-          <a
-            href={navUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 text-white font-bold mb-4 hover:bg-orange-600 transition-colors shadow-sm"
+          <button
+            onClick={() => openAmapNavigation(place.coordinates.lng, place.coordinates.lat, navAddress)}
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 text-white font-bold mb-4 hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
           >
             <Navigation size={18} />
             {t.navigate}
             <ExternalLink size={14} className="opacity-70" />
-          </a>
+          </button>
         )}
 
         {/* Map */}
