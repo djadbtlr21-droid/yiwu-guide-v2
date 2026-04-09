@@ -51,8 +51,8 @@ export default function DetailPage() {
   const displayName = lang === 'en' && place.nameEn ? place.nameEn : (place.nameKo || place.name);
   const displayAddress = lang === 'en' ? place.address?.en : (place.address?.ko || place.address?.cn);
 
-  const navAddress = place.name;
-  const navUrl = getAmapNavUrl(place.coordinates?.lng, place.coordinates?.lat, navAddress);
+  const navName = place.name;
+  const navUrl = getAmapNavUrl(navName);
   const waUrl = getWhatsAppUrl(place.wechat);
 
   const gradient = getCategoryGradient(place.category, place.subCategory);
@@ -162,7 +162,7 @@ export default function DetailPage() {
         {/* Amap navigate button */}
         {place.coordinates?.lng && (
           <button
-            onClick={() => openAmapNavigation(place.coordinates.lng, place.coordinates.lat, navAddress)}
+            onClick={() => openAmapNavigation(navName)}
             className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-orange-500 text-white font-bold mb-4 hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
           >
             <Navigation size={18} />

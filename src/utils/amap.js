@@ -34,22 +34,22 @@ export function getStaticMapUrl(lng, lat, zoom = 15, size = '600*300') {
   );
 }
 
-// ── Amap navigation deeplink ───────────────────────────────────
-export function getAmapNavUrl(lng, lat, address = '') {
-  const encoded = encodeURIComponent(address);
-  return `https://uri.amap.com/navigation?to=${lng},${lat},${encoded}&mode=car&src=yiwuguide&callnative=1`;
+// ── Amap navigation deeplink (keyword search, not coordinates) ─
+export function getAmapNavUrl(name = '') {
+  const encoded = encodeURIComponent(name);
+  return `https://ditu.amap.com/search?query=${encoded}&city=义乌`;
 }
 
 // ── Open Amap with mobile deeplink → web fallback ─────────────
-export function openAmapNavigation(lng, lat, address = '') {
+export function openAmapNavigation(name = '') {
   const ua = navigator.userAgent;
   const isAndroid = /Android/.test(ua);
   const isIOS = /iPad|iPhone|iPod/.test(ua);
-  const encodedAddr = encodeURIComponent(address);
-  const webUrl = `https://uri.amap.com/navigation?to=${lng},${lat},${encodedAddr}&mode=car&src=yiwuguide`;
+  const encodedName = encodeURIComponent(name);
+  const webUrl = `https://ditu.amap.com/search?query=${encodedName}&city=义乌`;
 
   if (isIOS) {
-    const deeplink = `iosamap://path?sourceApplication=yiwuguide&dlat=${lat}&dlon=${lng}&dname=${encodedAddr}&dev=0`;
+    const deeplink = `iosamap://poi?sourceApplication=yiwuguide&keywords=${encodedName}&dev=0`;
     const timer = setTimeout(() => { window.location.href = webUrl; }, 2000);
     window.addEventListener('visibilitychange', function handler() {
       clearTimeout(timer);
@@ -57,7 +57,7 @@ export function openAmapNavigation(lng, lat, address = '') {
     }, { once: true });
     window.location.href = deeplink;
   } else if (isAndroid) {
-    const deeplink = `androidamap://route?sourceApplication=yiwuguide&dlat=${lat}&dlon=${lng}&dname=${encodedAddr}&dev=0`;
+    const deeplink = `androidamap://poi?sourceApplication=yiwuguide&keywords=${encodedName}&dev=0`;
     const timer = setTimeout(() => { window.location.href = webUrl; }, 2000);
     window.addEventListener('visibilitychange', function handler() {
       clearTimeout(timer);
