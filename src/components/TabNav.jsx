@@ -8,6 +8,8 @@ const COLOR_ACTIVE = {
   green:  'text-green-500',
   blue:   'text-blue-500',
   pink:   'text-pink-500',
+  amber:  'text-amber-500',
+  red:    'text-red-500',
 };
 
 const BG_ACTIVE = {
@@ -16,19 +18,22 @@ const BG_ACTIVE = {
   green:  'bg-green-500',
   blue:   'bg-blue-500',
   pink:   'bg-pink-500',
+  amber:  'bg-amber-500',
+  red:    'bg-red-500',
 };
 
 export default function TabNav() {
   const { tab, changeTab, lang } = useApp();
   const t = T[lang];
 
-  // category.id is the Korean string, which IS the display label
   const labels = {
-    '식당':  t.restaurant,
-    '당구':  t.billiards,
-    '마사지': t.massage,
-    '쇼핑몰': t.shopping,
+    '식당':   t.restaurant,
+    '운동':   t.sports,
+    '마사지':  t.massage,
+    '여가':   t.leisure,
+    '쇼핑몰':  t.shopping,
     '집/회사': t.home,
+    '내 장소': t.myPlacesTab,
   };
 
   return (
@@ -48,10 +53,8 @@ export default function TabNav() {
               {active && (
                 <span className={`absolute top-0 left-0 right-0 h-0.5 ${BG_ACTIVE[cat.color]}`} />
               )}
-              {/* Icon — 2x (was text-xl/20px → text-3xl/30px) */}
-              <span className="text-3xl leading-none">{cat.icon}</span>
-              {/* Label — 2x (was text-xs/12px → text-sm/14px ~) */}
-              <span className="text-sm font-semibold leading-tight">{labels[cat.id]}</span>
+              <span className="text-2xl leading-none">{cat.icon}</span>
+              <span className="text-xs font-semibold leading-tight">{labels[cat.id]}</span>
             </button>
           );
         })}
