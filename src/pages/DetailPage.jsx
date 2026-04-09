@@ -155,7 +155,7 @@ export default function DetailPage() {
                   🚶 {place.walkTime}
                 </span>
               )}
-              <p className="w-full text-xs text-gray-400 dark:text-gray-500 mt-1">(신광휘에서 출발 시)</p>
+              <p className="w-full text-sm font-bold text-orange-400 mt-1">(신광휘에서 출발 시)</p>
             </div>
           )}
         </div>

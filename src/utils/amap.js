@@ -43,21 +43,22 @@ export function getAmapNavUrl(lng, lat, address = '') {
 // ── Open Amap with mobile deeplink → web fallback ─────────────
 export function openAmapNavigation(lng, lat, address = '') {
   const ua = navigator.userAgent;
-  const isAndroid = /android/i.test(ua);
-  const isIOS = /iphone|ipad|ipod/i.test(ua);
-  const webUrl = getAmapNavUrl(lng, lat, address);
+  const isAndroid = /Android/.test(ua);
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const encodedAddr = encodeURIComponent(address);
+  const webUrl = `https://uri.amap.com/navigation?to=${lng},${lat},${encodedAddr}&mode=car&src=yiwuguide`;
 
-  if (isAndroid) {
-    const deeplink = `androidamap://navi?sourceApplication=yiwuguide&lat=${lat}&lon=${lng}&dev=0&style=2`;
-    const timer = setTimeout(() => { window.location.href = webUrl; }, 1500);
+  if (isIOS) {
+    const deeplink = `iosamap://path?sourceApplication=yiwuguide&dlat=${lat}&dlon=${lng}&dname=${encodedAddr}&dev=0`;
+    const timer = setTimeout(() => { window.location.href = webUrl; }, 2000);
     window.addEventListener('visibilitychange', function handler() {
       clearTimeout(timer);
       window.removeEventListener('visibilitychange', handler);
     }, { once: true });
     window.location.href = deeplink;
-  } else if (isIOS) {
-    const deeplink = `iosamap://navi?sourceApplication=yiwuguide&lat=${lat}&lon=${lng}&dev=0&style=2`;
-    const timer = setTimeout(() => { window.location.href = webUrl; }, 1500);
+  } else if (isAndroid) {
+    const deeplink = `androidamap://route?sourceApplication=yiwuguide&dlat=${lat}&dlon=${lng}&dname=${encodedAddr}&dev=0`;
+    const timer = setTimeout(() => { window.location.href = webUrl; }, 2000);
     window.addEventListener('visibilitychange', function handler() {
       clearTimeout(timer);
       window.removeEventListener('visibilitychange', handler);
