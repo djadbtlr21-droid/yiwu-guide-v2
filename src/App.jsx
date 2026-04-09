@@ -5,6 +5,7 @@ import TabNav from './components/TabNav';
 import ListPage from './pages/ListPage';
 import DetailPage from './pages/DetailPage';
 import FavoritesPage from './pages/FavoritesPage';
+import CustomDetailPage from './pages/CustomDetailPage';
 
 function Layout() {
   return (
@@ -14,6 +15,7 @@ function Layout() {
         <Routes>
           <Route path="/"           element={<ListPage />} />
           <Route path="/place/:id"  element={<DetailPage />} />
+          <Route path="/custom/:id" element={<CustomDetailPage />} />
           <Route path="/favorites"  element={<FavoritesPage />} />
           <Route path="*"           element={<ListPage />} />
         </Routes>

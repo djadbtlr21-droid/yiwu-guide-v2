@@ -130,7 +130,7 @@ export default function AddPlaceModal({ editingPlace, onClose }) {
     onClose();
   };
 
-  const catLabels = { '식당': t.restaurant, '운동': t.sports, '마사지': t.massage, '여가': t.leisure, '쇼핑몰': t.shopping, '집/회사': t.home };
+  const catLabels = { '식당': t.restaurant, '운동': t.sports, '마사지': t.massage, '쇼핑': t.shopping, '집/회사': t.home };
   const subLabels = { '전체': t.other, '한식': t.korean, '중식': t.chinese };
 
   const inputClass =

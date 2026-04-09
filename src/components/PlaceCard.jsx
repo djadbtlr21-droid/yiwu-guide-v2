@@ -48,9 +48,8 @@ function getSubName(place) {
 function getCategoryEmoji(category, subCategory) {
   if (category === '식당') return subCategory === '한식' ? '🍚' : '🥢';
   if (category === '마사지') return '💆';
-  if (category === '운동') return '🏃';
-  if (category === '여가') return '🎉';
-  if (category === '쇼핑몰') return '🛍';
+  if (category === '운동') return subCategory === '골프' ? '⛳' : '🏃';
+  if (category === '쇼핑') return '🛍';
   if (category === '내 장소') return '📌';
   return '🏠';
 }

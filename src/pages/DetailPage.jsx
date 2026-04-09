@@ -128,7 +128,13 @@ export default function DetailPage() {
           {/* Subcategory badge */}
           {place.subCategory && (
             <span className={`inline-block mt-2 text-xs font-bold px-3 py-1 rounded-full text-white ${
-              place.subCategory === '한식' ? 'bg-red-500' : 'bg-amber-500'
+              place.subCategory === '한식' ? 'bg-red-500'
+              : place.subCategory === '중식' ? 'bg-amber-500'
+              : place.subCategory === '당구' ? 'bg-green-500'
+              : place.subCategory === '골프' ? 'bg-emerald-500'
+              : place.subCategory === '쇼핑몰' ? 'bg-pink-500'
+              : place.subCategory === '마트' ? 'bg-rose-500'
+              : 'bg-gray-500'
             }`}>
               {place.subCategory}
             </span>

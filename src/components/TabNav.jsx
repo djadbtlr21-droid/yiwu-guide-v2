@@ -30,8 +30,7 @@ export default function TabNav() {
     '식당':   t.restaurant,
     '운동':   t.sports,
     '마사지':  t.massage,
-    '여가':   t.leisure,
-    '쇼핑몰':  t.shopping,
+    '쇼핑':   t.shopping,
     '집/회사': t.home,
     '내 장소': t.myPlacesTab,
   };
