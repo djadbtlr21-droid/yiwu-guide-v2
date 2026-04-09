@@ -13,7 +13,7 @@ export function AppProvider({ children }) {
   const [tab, setTab] = useState('식당');
   const [filter, setFilter] = useState('전체');
   const [query, setQuery] = useState('');
-  const [sortBy, setSortBy] = useState('distance');
+  const [sortBy, setSortBy] = useState('default');
 
   // ── Theme ─────────────────────────────────────────────────────
   const [theme, setTheme] = useState(() => {

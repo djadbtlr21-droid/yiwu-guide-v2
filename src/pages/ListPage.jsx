@@ -29,10 +29,12 @@ export default function ListPage() {
       case 'name':
         return arr.sort((a, b) => (a.nameKo || a.name || '').localeCompare(b.nameKo || b.name || '', 'ko'));
       case 'distance':
-      default:
         return arr.sort((a, b) =>
           parseDistanceMeters(a.distance) - parseDistanceMeters(b.distance)
         );
+      case 'default':
+      default:
+        return arr;
     }
   }, [filtered, sortBy]);
 

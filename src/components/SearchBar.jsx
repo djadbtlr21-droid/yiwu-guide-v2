@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { T } from '../translations';
 
 const SORT_OPTIONS = [
+  { value: 'default',  ko: '기본순',  en: 'Default'  },
   { value: 'distance', ko: '거리순', en: 'Distance' },
   { value: 'rating',   ko: '별점순', en: 'Rating'   },
   { value: 'name',     ko: '이름순', en: 'Name'     },
