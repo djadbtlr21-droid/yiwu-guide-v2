@@ -101,8 +101,8 @@ export default function DetailPage() {
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{displayName}</h1>
               <p className="text-gray-400 text-sm mt-0.5">{place.name}</p>
             </div>
-            {open !== null && (
-              <span className={`flex-shrink-0 text-xs font-bold px-3 py-1 rounded-full text-white mt-1 ${
+            {open !== null && place.category !== '집/회사' && (
+              <span className={`flex-shrink-0 text-sm font-bold px-3 py-1.5 rounded-full text-white mt-1 ${
                 open ? 'bg-green-500' : 'bg-gray-500'
               }`}>
                 {open ? t.open : t.closed}
@@ -125,9 +125,9 @@ export default function DetailPage() {
             )}
           </div>
 
-          {/* Subcategory badge */}
+          {/* Subcategory badge — 30% larger */}
           {place.subCategory && (
-            <span className={`inline-block mt-2 text-xs font-bold px-3 py-1 rounded-full text-white ${
+            <span className={`inline-block mt-2 text-sm font-bold px-3 py-1.5 rounded-full text-white ${
               place.subCategory === '한식' ? 'bg-red-500'
               : place.subCategory === '중식' ? 'bg-amber-500'
               : place.subCategory === '당구' ? 'bg-green-500'
@@ -142,7 +142,7 @@ export default function DetailPage() {
 
           {/* Distance chips */}
           {(place.distance || place.driveTime || place.walkTime) && (
-            <div className="flex gap-2 mt-3 flex-wrap">
+            <div className="flex items-center gap-2 mt-3 flex-wrap">
               {place.distance && (
                 <span className="flex items-center gap-1 text-xs bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-300 px-3 py-1.5 rounded-full">
                   <MapPin size={12} />
@@ -160,7 +160,7 @@ export default function DetailPage() {
                   🚶 {place.walkTime}
                 </span>
               )}
-              <span className="ml-2 text-sm font-bold text-orange-400">(신광휘에서 출발 시)</span>
+              <span className="text-sm font-bold text-orange-400 self-center">(신광휘에서 출발 시)</span>
             </div>
           )}
         </div>
@@ -219,11 +219,13 @@ export default function DetailPage() {
           )}
 
           {/* Hours */}
-          {place.hours && (
-            <InfoRow icon={<Clock size={18} />} label={t.hours}>
+          <InfoRow icon={<Clock size={18} />} label={t.hours}>
+            {place.hours && place.hours !== '미정' && place.hours !== '영업시간 미정' ? (
               <p className="text-sm text-gray-700 dark:text-gray-200">{place.hours}</p>
-            </InfoRow>
-          )}
+            ) : (
+              <p className="text-sm text-gray-400">{lang === 'ko' ? '영업시간 정보없음' : 'Hours not available'}</p>
+            )}
+          </InfoRow>
 
           {/* Price */}
           {place.priceRange && (

@@ -33,7 +33,7 @@ export const places = [
     distance: '6.4km',
     walkTime: '1시간 47분',
     driveTime: '22분',
-    images: [null, null, null],
+    images: ['/images/place_11_1.png', '/images/place_11_2.png'],
   },
   {
     id: 12,
@@ -62,7 +62,7 @@ export const places = [
     distance: '6.1km',
     walkTime: '1시간 44분',
     driveTime: '20분',
-    images: [null, null, null],
+    images: ['/images/place_12_1.png', '/images/place_12_2.png'],
   },
   {
     id: 5,
@@ -91,7 +91,7 @@ export const places = [
     distance: '5.9km',
     walkTime: '1시간 44분',
     driveTime: '20분',
-    images: [null, null, null],
+    images: ['/images/place_05_1.png', '/images/place_05_2.png'],
   },
   {
     id: 14,
@@ -120,7 +120,7 @@ export const places = [
     distance: '5.9km',
     walkTime: '1시간 45분',
     driveTime: '20분',
-    images: [null, null, null],
+    images: ['/images/place_14_1.png', '/images/place_14_2.png'],
   },
   {
     id: 15,
@@ -149,7 +149,7 @@ export const places = [
     distance: '5.8km',
     walkTime: '1시간 43분',
     driveTime: '20분',
-    images: [null, null, null],
+    images: ['/images/place_15_1.png', '/images/place_15_2.png'],
   },
   {
     id: 9,
@@ -178,7 +178,7 @@ export const places = [
     distance: '5.7km',
     walkTime: '72분',
     driveTime: '15분',
-    images: [null, null, null],
+    images: ['/images/place_09_1.png', '/images/place_09_2.png'],
   },
   {
     id: 16,
@@ -207,7 +207,7 @@ export const places = [
     distance: '5.6km',
     walkTime: '71분',
     driveTime: '16분',
-    images: [null, null, null],
+    images: ['/images/place_16_1.png', '/images/place_16_2.png'],
   },
   {
     id: 13,
@@ -236,7 +236,7 @@ export const places = [
     distance: '3.5km',
     walkTime: '44분',
     driveTime: '19분',
-    images: [null, null, null],
+    images: ['/images/place_13_1.png', '/images/place_13_2.png'],
   },
   {
     id: 29,
@@ -245,7 +245,7 @@ export const places = [
     nameKo: '순이 순대국밥',
     category: '식당',
     subCategory: '한식',
-    images: ['https://via.placeholder.com/400x300?text=顺意米肠汤饭屋'],
+    images: ['/images/place_29_1.png', '/images/place_29_2.png'],
     rating: 4.1,
     reviews: 635,
     address: {
@@ -274,7 +274,7 @@ export const places = [
     nameKo: '도니족발',
     category: '식당',
     subCategory: '한식',
-    images: ['https://via.placeholder.com/400x300?text=多尼猪蹄'],
+    images: ['/images/place_30_1.png', '/images/place_30_2.png'],
     rating: 4.2,
     reviews: 1783,
     address: {
@@ -303,7 +303,7 @@ export const places = [
     nameKo: '참솔 한국요리',
     category: '식당',
     subCategory: '한식',
-    images: ['https://via.placeholder.com/400x300?text=晨松韩国料理'],
+    images: ['/images/place_32_1.png', '/images/place_32_2.png'],
     rating: 4.3,
     reviews: 203,
     address: {
@@ -332,7 +332,7 @@ export const places = [
     nameKo: '대어 회집 (첸청소구점)',
     category: '식당',
     subCategory: '한식',
-    images: ['https://via.placeholder.com/400x300?text=大渔刺身'],
+    images: ['/images/place_36_1.png', '/images/place_36_2.png'],
     rating: 4.3,
     reviews: 68,
     address: {
@@ -365,7 +365,7 @@ export const places = [
     nameKo: '대원꼬치 (강남4구점)',
     category: '식당',
     subCategory: '중식',
-    images: ['https://via.placeholder.com/400x300?text=大圆串店'],
+    images: ['/images/place_28_1.png', '/images/place_28_2.png'],
     rating: 4.5,
     reviews: 365,
     address: {
@@ -394,7 +394,7 @@ export const places = [
     nameKo: '명품 꼬치',
     category: '식당',
     subCategory: '중식',
-    images: ['https://via.placeholder.com/400x300?text=名品烤串'],
+    images: ['/images/place_31_1.png', '/images/place_31_2.png'],
     rating: 4.4,
     reviews: 224,
     address: {
@@ -443,7 +443,7 @@ export const places = [
     distance: '214m',
     walkTime: '3분',
     driveTime: '5분',
-    images: [null, null, null],
+    images: ['/images/place_01_1.png', '/images/place_01_2.png'],
   },
   {
     id: 2,
@@ -472,7 +472,7 @@ export const places = [
     distance: '9m',
     walkTime: '1분',
     driveTime: '2분',
-    images: [null, null, null],
+    images: ['/images/place_02_1.png', '/images/place_02_2.png'],
   },
   {
     id: 4,
@@ -501,7 +501,7 @@ export const places = [
     distance: '208m',
     walkTime: '3분',
     driveTime: '5분',
-    images: [null, null, null],
+    images: ['/images/place_04_1.png', '/images/place_04_2.png'],
   },
   {
     id: 6,
@@ -530,7 +530,7 @@ export const places = [
     distance: '360m',
     walkTime: '5분',
     driveTime: '5분',
-    images: [null, null, null],
+    images: ['/images/place_06_1.png', '/images/place_06_2.png'],
   },
   {
     id: 7,
@@ -559,7 +559,7 @@ export const places = [
     distance: '360m',
     walkTime: '5분',
     driveTime: '5분',
-    images: [null, null, null],
+    images: ['/images/place_07_1.png', '/images/place_07_2.png'],
   },
   {
     id: 8,
@@ -588,7 +588,7 @@ export const places = [
     distance: '360m',
     walkTime: '5분',
     driveTime: '5분',
-    images: [null, null, null],
+    images: ['/images/place_08_1.png', '/images/place_08_2.png'],
   },
   {
     id: 3,
@@ -617,7 +617,7 @@ export const places = [
     distance: '262m',
     walkTime: '4분',
     driveTime: '6분',
-    images: [null, null, null],
+    images: ['/images/place_03_1.png', '/images/place_03_2.png'],
   },
   {
     id: 10,
@@ -646,7 +646,7 @@ export const places = [
     distance: '4.1km',
     walkTime: '52분',
     driveTime: '11분',
-    images: [null, null, null],
+    images: ['/images/place_10_1.png', '/images/place_10_2.png'],
   },
   {
     id: 17,
@@ -675,7 +675,7 @@ export const places = [
     distance: '414m',
     walkTime: '5분',
     driveTime: '7분',
-    images: [null, null, null],
+    images: ['/images/place_17_1.png', '/images/place_17_2.png'],
   },
 
   // ──────────────────────────────────────────
@@ -708,7 +708,7 @@ export const places = [
     distance: '7.2km',
     walkTime: '91분',
     driveTime: '23분',
-    images: [null, null, null],
+    images: ['/images/place_18_1.png', '/images/place_18_2.png'],
   },
   {
     id: 19,
@@ -737,7 +737,7 @@ export const places = [
     distance: '237m',
     walkTime: '3분',
     driveTime: '3분',
-    images: [null, null, null],
+    images: ['/images/place_19_1.png', '/images/place_19_2.png'],
   },
 
   // ──────────────────────────────────────────
@@ -770,7 +770,7 @@ export const places = [
     distance: '400m',
     walkTime: '5분',
     driveTime: '3분',
-    images: [null, null, null],
+    images: ['/images/place_20_1.png', '/images/place_20_2.png'],
   },
   {
     id: 21,
@@ -799,7 +799,7 @@ export const places = [
     distance: '400m',
     walkTime: '5분',
     driveTime: '8분',
-    images: [null, null, null],
+    images: ['/images/place_21_1.png', '/images/place_21_2.png'],
   },
   {
     id: 22,
@@ -828,7 +828,7 @@ export const places = [
     distance: '7.2km',
     walkTime: '91분',
     driveTime: '23분',
-    images: [null, null, null],
+    images: ['/images/place_22_1.png', '/images/place_22_2.png'],
   },
 
   // ──────────────────────────────────────────
@@ -841,7 +841,7 @@ export const places = [
     nameKo: '골프존 스크린골프 (남산점)',
     category: '운동',
     subCategory: '골프',
-    images: ['https://via.placeholder.com/400x300?text=GOLFZON'],
+    images: ['/images/place_33_1.png', '/images/place_33_2.png'],
     rating: 4.0,
     reviews: 20,
     address: {
@@ -870,7 +870,7 @@ export const places = [
     nameKo: '행복호 야외 골프연습장',
     category: '운동',
     subCategory: '골프',
-    images: ['https://via.placeholder.com/400x300?text=幸福湖健身'],
+    images: ['/images/place_34_1.png', '/images/place_34_2.png'],
     rating: 4.4,
     reviews: 10,
     address: {
@@ -899,7 +899,7 @@ export const places = [
     nameKo: '헝띠엔 골프장',
     category: '운동',
     subCategory: '골프',
-    images: ['https://via.placeholder.com/400x300?text=横店高尔夫'],
+    images: ['/images/place_35_1.png', '/images/place_35_2.png'],
     rating: 0,
     reviews: 9,
     address: {
@@ -932,7 +932,7 @@ export const places = [
     nameKo: '이우지신 쇼핑몰',
     category: '쇼핑',
     subCategory: '쇼핑몰',
-    images: ['https://via.placeholder.com/400x300?text=义乌之心'],
+    images: ['/images/place_24_1.png', '/images/place_24_2.png'],
     rating: 4.0,
     reviews: 1501,
     address: {
@@ -961,7 +961,7 @@ export const places = [
     nameKo: '이우천지 쇼핑몰',
     category: '쇼핑',
     subCategory: '쇼핑몰',
-    images: ['https://via.placeholder.com/400x300?text=义乌天地'],
+    images: ['/images/place_25_1.png', '/images/place_25_2.png'],
     rating: 3.5,
     reviews: 1207,
     address: {
@@ -990,7 +990,7 @@ export const places = [
     nameKo: '신광휘 쇼핑몰',
     category: '쇼핑',
     subCategory: '쇼핑몰',
-    images: ['https://via.placeholder.com/400x300?text=新光汇'],
+    images: ['/images/place_26_1.png', '/images/place_26_2.png'],
     rating: 5.0,
     reviews: 850,
     address: {
@@ -1019,7 +1019,7 @@ export const places = [
     nameKo: '중한 마트 (첸청소구점)',
     category: '쇼핑',
     subCategory: '마트',
-    images: ['https://via.placeholder.com/400x300?text=中韩平价超市'],
+    images: ['/images/place_37_1.png', '/images/place_37_2.png'],
     rating: 4.6,
     reviews: 0,
     address: {
@@ -1048,7 +1048,7 @@ export const places = [
     nameKo: '우리한인마트 (강남4구점)',
     category: '쇼핑',
     subCategory: '마트',
-    images: ['https://via.placeholder.com/400x300?text=艾姆精选超市'],
+    images: ['/images/place_38_1.png', '/images/place_38_2.png'],
     rating: 4.3,
     reviews: 0,
     address: {
@@ -1081,7 +1081,7 @@ export const places = [
     nameKo: '이우 세무중심 아파트 (집)',
     category: '집/회사',
     subCategory: '집',
-    images: ['https://via.placeholder.com/400x300?text=义乌世贸中心'],
+    images: ['/images/place_23_1.png', '/images/place_23_2.png'],
     rating: 0,
     reviews: 0,
     address: {
@@ -1110,7 +1110,7 @@ export const places = [
     nameKo: '리엔두 빌딩 B동 (회사)',
     category: '집/회사',
     subCategory: '회사',
-    images: ['https://via.placeholder.com/400x300?text=莲都大厦B座'],
+    images: ['/images/place_27_1.png', '/images/place_27_2.png'],
     rating: 0,
     reviews: 0,
     address: {

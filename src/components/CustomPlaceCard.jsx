@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Heart, Phone, Clock, MapPin, DollarSign, Pencil, Trash2, Star, Navigation } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { T } from '../translations';
-import { openAmapNavigation, getCategoryGradient } from '../utils/amap';
+import { openAmapNavigation, getCategoryGradient, isOpenNow } from '../utils/amap';
 
 function MiniStars({ rating }) {
   if (!rating) return null;
@@ -25,6 +25,7 @@ export default function CustomPlaceCard({ place, onEdit }) {
   const fav = isFavorite(place.id);
   const gradient = getCategoryGradient(place.category, place.subcategory);
   const navName = place.nameZh || place.name;
+  const open = isOpenNow(place.hours);
 
   const displayName = place.name || '(이름 없음)';
 
@@ -55,6 +56,15 @@ export default function CustomPlaceCard({ place, onEdit }) {
         <span className="absolute top-2 left-2 text-xs font-bold px-2 py-0.5 rounded-full bg-white/90 text-orange-600 shadow">
           {t.customBadge}
         </span>
+
+        {/* Open/Closed badge */}
+        {open !== null && (
+          <span className={`absolute top-2 right-2 text-sm font-bold px-3 py-1 rounded-full text-white shadow ${
+            open ? 'bg-green-500' : 'bg-gray-500'
+          }`}>
+            {open ? t.open : t.closed}
+          </span>
+        )}
       </div>
 
       {/* Content */}

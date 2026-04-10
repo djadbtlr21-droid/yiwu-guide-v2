@@ -65,7 +65,16 @@ export default function PlaceCard({ place }) {
   const subName = getSubName(place);
   const emoji = getCategoryEmoji(place.category, place.subCategory);
 
-  const subBadgeColor = place.subCategory === '한식' ? 'bg-red-500' : 'bg-amber-500';
+  const subBadgeColor =
+    place.subCategory === '한식' ? 'bg-red-500'
+    : place.subCategory === '중식' ? 'bg-amber-500'
+    : place.subCategory === '당구' ? 'bg-green-500'
+    : place.subCategory === '골프' ? 'bg-emerald-500'
+    : place.subCategory === '쇼핑몰' ? 'bg-pink-500'
+    : place.subCategory === '마트' ? 'bg-rose-500'
+    : 'bg-gray-500';
+
+  const showStatus = open !== null && place.category !== '집/회사';
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
@@ -83,16 +92,16 @@ export default function PlaceCard({ place }) {
           )}
         </div>
 
-        {/* Subcategory badge */}
+        {/* Subcategory badge — 30% larger */}
         {place.subCategory && (
-          <span className={`absolute top-2 left-2 text-xs font-bold px-2 py-0.5 rounded-full text-white shadow ${subBadgeColor}`}>
+          <span className={`absolute top-2 left-2 text-sm font-bold px-3 py-1 rounded-full text-white shadow ${subBadgeColor}`}>
             {place.subCategory}
           </span>
         )}
 
-        {/* Open/Closed badge */}
-        {open !== null && (
-          <span className={`absolute top-2 right-2 text-xs font-bold px-2 py-0.5 rounded-full text-white shadow ${
+        {/* Open/Closed badge — 30% larger */}
+        {showStatus && (
+          <span className={`absolute top-2 right-2 text-sm font-bold px-3 py-1 rounded-full text-white shadow ${
             open ? 'bg-green-500' : 'bg-gray-500'
           }`}>
             {open ? t.open : t.closed}

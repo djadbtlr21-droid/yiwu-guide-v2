@@ -78,25 +78,25 @@ export function getWhatsAppUrl(number) {
 
 // ── Check if currently open ────────────────────────────────────
 export function isOpenNow(hours) {
-  if (!hours || hours.includes('24시간')) return true;
+  if (!hours || hours === '' || hours === '미정' || hours === '영업시간 미정' || hours === '홈' || hours === '사무실') {
+    return null;
+  }
+  if (hours === '24시간' || hours === '24시간 (연중무휴)') {
+    return true;
+  }
   try {
     const now = new Date();
-    const hhmm = now.getHours() * 60 + now.getMinutes();
-    const ranges = hours.split('/').map(s => s.trim());
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    const ranges = hours.split('/').map(r => r.trim());
     for (const range of ranges) {
-      const match = range.match(/(\d{1,2}):(\d{2})[~\-](?:翌(\d{1,2}):(\d{2})|익일(\d{1,2}):(\d{2})|(\d{1,2}):(\d{2}))/);
+      const match = range.match(/(\d{1,2}):(\d{2})\s*[-~]\s*(\d{1,2}):(\d{2})/);
       if (!match) continue;
-      const [, sh, sm, nh1, nm1, nh2, nm2, eh, em] = match;
-      const open = parseInt(sh) * 60 + parseInt(sm);
-      let close;
-      if (nh1) close = parseInt(nh1) * 60 + parseInt(nm1) + 24 * 60;
-      else if (nh2) close = parseInt(nh2) * 60 + parseInt(nm2) + 24 * 60;
-      else close = parseInt(eh) * 60 + parseInt(em);
-
-      if (close > 24 * 60) {
-        if (hhmm >= open || hhmm <= close - 24 * 60) return true;
+      const startMinutes = parseInt(match[1]) * 60 + parseInt(match[2]);
+      const endMinutes = parseInt(match[3]) * 60 + parseInt(match[4]);
+      if (endMinutes <= startMinutes) {
+        if (currentMinutes >= startMinutes || currentMinutes < endMinutes) return true;
       } else {
-        if (hhmm >= open && hhmm <= close) return true;
+        if (currentMinutes >= startMinutes && currentMinutes < endMinutes) return true;
       }
     }
     return false;
